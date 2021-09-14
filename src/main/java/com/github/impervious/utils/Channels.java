@@ -1,14 +1,32 @@
 package com.github.impervious.utils;
 
 import com.github.impervious.Main;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
 import net.dv8tion.jda.api.entities.TextChannel;
 
 @RequiredArgsConstructor
 public enum Channels {
 
-    ROOM_ID(373117816817057793L),
+    /*
+    *   HUB CHANNELS
+    */
+
+    HUBTEST_ID(373117816817057793L),
+    ERRORS_ID(581194394288390154L),
+
+    /*
+    *   LNR CHANNELS
+    */
+
+    PROGENERAL_ID(758712768211451915L),
+    DEVGENERAL_ID(758713446526091374L),
+
+    PROREPORT_ID(758712857763250187L),
+    DEVREPORT_ID(758713467653324902L),
+
     TESTING_ID(788105798743752715L),
     DEVFIA_ID(774505083600896041L),
     PROFIA_ID(774504983768072202L);
@@ -16,5 +34,5 @@ public enum Channels {
     @Getter
     private final long id;
 
-    public TextChannel getChannel() { return Main.getMainGuild().getTextChannelById(id); }
+    public TextChannel getChannel() { return Main.getInstance().getClient().getTextChannelById(id); }
 }

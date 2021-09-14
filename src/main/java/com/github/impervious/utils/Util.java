@@ -1,8 +1,14 @@
 package com.github.impervious.utils;
 
 import com.github.impervious.Main;
+
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.TextChannel;
+
+import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import org.apache.commons.io.FileUtils;
 
 import java.awt.*;
@@ -47,19 +53,48 @@ public class Util {
     public static void sendMessage(MessageChannel channel, String message) {
         try {
             channel.sendMessage(message).queue();
-        } catch(Exception ex) {
-            ex.printStackTrace();
+        } catch(InsufficientPermissionException missingPerm) {
+            reportError("Missing permission to send message.", missingPerm);
+        } catch(IllegalArgumentException illegalArg) {
+            reportError("Message is too long, empty or null", illegalArg);
         }
     }
 
-    //TODO DOES NOT WORK
-    /*public static void sendEmbed(String author, String authorURL, String authorIcon, String description, String footer) {
-        new EmbedBuilder()
-                .setAuthor(author, authorURL, authorIcon)
+    public static void sendEmbed(TextChannel channel, String description) {
+        Member impervious = Main.getMainGuild().retrieveMemberById(73463573900173312L).complete();
+        MessageEmbed embed = new EmbedBuilder()
+                .setAuthor(Main.getInstance().getClient().getSelfUser().getName(), Main.getInstance().getClient().getSelfUser().getAvatarUrl())
                 .setColor(new Color(212, 39, 177))
                 .setTitle(description)
-                .setFooter(footer)
+                .setFooter("Made by " + impervious.getEffectiveName() + "#" + impervious.getUser().getDiscriminator())
                 .setTimestamp(Instant.now())
                 .build();
-    }*/
+            channel.sendMessageEmbeds(embed).queue();
+    }
+
+    public static void reportError(String message, Exception e) {
+        e.printStackTrace();
+        EmbedBuilder embed = new EmbedBuilder();
+
+        StringBuilder stack = new StringBuilder();
+        for(StackTraceElement s : e.getStackTrace()) {
+            stack.append(s.toString());
+            stack.append("\n");
+        }
+
+        String stackString = stack.toString();
+        if(stackString.length() > 1024) {
+            stackString = stackString.substring(0, 1024);
+        }
+
+        Channels.ERRORS_ID.getChannel().sendMessageEmbeds(embed
+                .setColor(Color.RED)
+                .setAuthor(Main.getInstance().getClient().getSelfUser().getName(), Main.getInstance().getClient().getSelfUser().getAvatarUrl())
+                .setDescription(message)
+                .addField("\u200B", "\u200B", false)
+                .addField("Exception:", e.toString(), false)
+                .addField("Stack:", stackString, false)
+                .setTimestamp(Instant.now())
+                .build()).queue();
+    }
 }
