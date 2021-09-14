@@ -72,6 +72,11 @@ public class Util {
             channel.sendMessageEmbeds(embed).queue();
     }
 
+    public static void easyEmbed(TextChannel channel, String description, Color color) {
+        MessageEmbed embed = new EmbedBuilder().setDescription(description).setColor(color).build();
+        channel.sendMessageEmbeds(embed).queue();
+    }
+
     public static void reportError(String message, Exception e) {
         e.printStackTrace();
         EmbedBuilder embed = new EmbedBuilder();
