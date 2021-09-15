@@ -2,7 +2,7 @@ name: FIABot Docker Image
 
 on:
   push:
-    branches: ['release']
+    branches: ['master']
 
 env:
   REGISTRY: ghcr.io
