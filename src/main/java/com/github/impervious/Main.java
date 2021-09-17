@@ -2,6 +2,7 @@ package com.github.impervious;
 
 import java.util.Optional;
 
+import com.github.impervious.commands.RemindCommand;
 import com.github.impervious.commands.TestCommand;
 import com.github.impervious.jobs.DriverReminder;
 import com.github.impervious.jobs.FIAReminder;
@@ -12,6 +13,7 @@ import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
+
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -50,7 +52,7 @@ public class Main {
         client.setActivity(null);
         client.setPrefix("$");
         client.setAlternativePrefix("!!");
-        client.addCommands(new TestCommand());
+        client.addCommands(new TestCommand(), new RemindCommand());
 
         try {
             jda = JDABuilder.createDefault(token.get())

@@ -12,7 +12,6 @@ public class TestCommand extends Command {
 
     public TestCommand() {
         this.name = "test";
-        this.aliases = new String[]{"remind"};
     }
 
     @Override
@@ -21,7 +20,7 @@ public class TestCommand extends Command {
         event.getMessage().delete().queue();
         if(event.getAuthor().equals(impervious.getUser())) {
             //TEST CODE HERE :)
-            Util.sendEmbed(event.getTextChannel(), "description");
+            Util.sendMessage(event.getTextChannel(), "eeeee");
         } else {
             Util.sendMessage(event.getTextChannel(), "<:monkaStab:772354625641906236>");
         }
