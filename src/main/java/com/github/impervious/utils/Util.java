@@ -1,6 +1,6 @@
 package com.github.impervious.utils;
 
-import com.github.impervious.Main;
+import com.github.impervious.FIABot;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -23,7 +23,7 @@ public class Util {
 
     static {
         try {
-            File jarPath = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParentFile();
+            File jarPath = new File(FIABot.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParentFile();
             botPath = new File(jarPath, "data");
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,9 +61,9 @@ public class Util {
     }
 
     public static void sendEmbed(TextChannel channel, String description) {
-        Member impervious = Main.getMainGuild().retrieveMemberById(73463573900173312L).complete();
+        Member impervious = FIABot.getMainGuild().retrieveMemberById(73463573900173312L).complete();
         MessageEmbed embed = new EmbedBuilder()
-                .setAuthor(Main.getInstance().getClient().getSelfUser().getName(), Main.getInstance().getClient().getSelfUser().getAvatarUrl())
+                .setAuthor(FIABot.getInstance().getClient().getSelfUser().getName(), FIABot.getInstance().getClient().getSelfUser().getAvatarUrl())
                 .setColor(new Color(212, 39, 177))
                 .setTitle(description)
                 .setFooter("Made by " + impervious.getEffectiveName() + "#" + impervious.getUser().getDiscriminator())
@@ -94,7 +94,7 @@ public class Util {
 
         Channels.ERRORS_ID.getChannel().sendMessageEmbeds(embed
                 .setColor(Color.RED)
-                .setAuthor(Main.getInstance().getClient().getSelfUser().getName(), Main.getInstance().getClient().getSelfUser().getAvatarUrl())
+                .setAuthor(FIABot.getInstance().getClient().getSelfUser().getName(), FIABot.getInstance().getClient().getSelfUser().getAvatarUrl())
                 .setDescription(message)
                 .addField("\u200B", "\u200B", false)
                 .addField("Exception:", e.toString(), false)

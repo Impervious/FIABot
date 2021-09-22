@@ -1,6 +1,6 @@
 package com.github.impervious.jobs;
 
-import com.github.impervious.Main;
+import com.github.impervious.FIABot;
 import com.github.impervious.utils.Channels;
 import com.github.impervious.utils.Util;
 
@@ -15,10 +15,10 @@ public class DriverReminder implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        Role proDriver = Main.getMainGuild().getRoleById(758712296381612092L);
-        Role proReserve = Main.getMainGuild().getRoleById(758719582814601247L);
-        Role devDriver = Main.getMainGuild().getRoleById(781259406695727125L);
-        Role devReserve = Main.getMainGuild().getRoleById(781259577348849694L);
+        Role proDriver = FIABot.getMainGuild().getRoleById(758712296381612092L);
+        Role proReserve = FIABot.getMainGuild().getRoleById(758719582814601247L);
+        Role devDriver = FIABot.getMainGuild().getRoleById(781259406695727125L);
+        Role devReserve = FIABot.getMainGuild().getRoleById(781259577348849694L);
 
         Calendar cal = Calendar.getInstance();
         int weekDay = cal.get(Calendar.DAY_OF_WEEK);

@@ -1,6 +1,6 @@
 package com.github.impervious.utils;
 
-import com.github.impervious.Main;
+import com.github.impervious.FIABot;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +18,5 @@ public enum FIAMembers {
     @Getter
     private final long id;
 
-    public Member getMember() { return Main.getMainGuild().getMemberById(id); }
+    public Member getMember() { return FIABot.getMainGuild().getMemberById(id); }
 }

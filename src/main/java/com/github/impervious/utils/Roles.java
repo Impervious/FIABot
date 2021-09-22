@@ -1,6 +1,6 @@
 package com.github.impervious.utils;
 
-import com.github.impervious.Main;
+import com.github.impervious.FIABot;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +18,5 @@ public enum Roles {
     @Getter
     private final long id;
 
-    public Role getRole() { return Main.getInstance().getClient().getRoleById(id); }
+    public Role getRole() { return FIABot.getInstance().getClient().getRoleById(id); }
 }

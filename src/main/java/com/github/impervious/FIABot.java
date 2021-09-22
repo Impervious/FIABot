@@ -23,19 +23,18 @@ import javax.security.auth.login.LoginException;
 import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
 
-public class Main {
-
+public class FIABot {
     private static JDA jda;
 
     private Scheduler scheduler;
 
-    private static Main instance;
+    private static FIABot instance;
 
     public static void main(String[] args) {
-        new Main();
+        new FIABot();
     }
 
-    public Main() {
+    public FIABot() {
         instance = this;
         Util util = new Util();
         Optional<String> token = util.getBotToken();
@@ -105,6 +104,6 @@ public class Main {
     }
 
     public static Guild getMainGuild() { return jda.getGuildById("739893045994061946"); }
-    public static Main getInstance() { return instance; }
+    public static FIABot getInstance() { return instance; }
     public JDA getClient() { return jda; }
 }

@@ -1,6 +1,6 @@
 package com.github.impervious.utils;
 
-import com.github.impervious.Main;
+import com.github.impervious.FIABot;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +34,5 @@ public enum Channels {
     @Getter
     private final long id;
 
-    public TextChannel getChannel() { return Main.getInstance().getClient().getTextChannelById(id); }
+    public TextChannel getChannel() { return FIABot.getInstance().getClient().getTextChannelById(id); }
 }
