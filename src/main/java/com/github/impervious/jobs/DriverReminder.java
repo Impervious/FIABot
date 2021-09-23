@@ -25,10 +25,10 @@ public class DriverReminder implements Job {
 
         if (weekDay == 4 && proDriver != null && proReserve != null) { //WEDNESDAY
             Util.sendMessage(Channels.PROGENERAL_ID.getChannel(), proDriver.getAsMention() + " " + proReserve.getAsMention());
-            Util.sendEmbed(Channels.PROGENERAL_ID.getChannel(), "Remember to submit any reports to " + Channels.PROREPORT_ID.getChannel().getAsMention() + " within 24 hours of this message.");
+            Util.sendMessage(Channels.PROGENERAL_ID.getChannel(), "Remember to submit any reports to " + Channels.PROREPORT_ID.getChannel().getAsMention() + " within 24 hours of this message.");
         } else if (weekDay == 1 && devDriver != null && devReserve != null) { //SUNDAY
             Util.sendMessage(Channels.DEVGENERAL_ID.getChannel(), devDriver.getAsMention() + " " + devReserve.getAsMention());
-            Util.sendEmbed(Channels.DEVGENERAL_ID.getChannel(), "Remember to submit any reports to " + Channels.DEVREPORT_ID.getChannel().getAsMention() + " within 24 hours of this message.");
+            Util.sendMessage(Channels.DEVGENERAL_ID.getChannel(), "Remember to submit any reports to " + Channels.DEVREPORT_ID.getChannel().getAsMention() + " within 24 hours of this message.");
         }
     }
 }

@@ -97,6 +97,8 @@ public class FIABot {
             if(scheduler != null) {
                 scheduler.scheduleJob(fiaReminder, fiaReminderTrigger);
                 scheduler.scheduleJob(driverReminder, driverReminderTrigger);
+
+                System.out.println("Loaded all jobs successfully.");
             }
         } catch(SchedulerException e) {
             Util.reportError("Error scheduling jobs", e);

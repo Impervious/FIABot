@@ -2,6 +2,7 @@ package com.github.impervious.jobs;
 
 import com.github.impervious.FIABot;
 import com.github.impervious.utils.Channels;
+import com.github.impervious.utils.FIAMembers;
 import com.github.impervious.utils.Util;
 
 import net.dv8tion.jda.api.entities.Member;
@@ -16,10 +17,10 @@ public class FIAReminder implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        Member venohm = FIABot.getMainGuild().retrieveMemberById(289669713787748352L).complete();
-        Member acct4Loss = FIABot.getMainGuild().retrieveMemberById(309112716948275200L).complete();
-        Member xEntric = FIABot.getMainGuild().retrieveMemberById(272790899757678593L).complete();
-        Member impervious = FIABot.getMainGuild().retrieveMemberById(73463573900173312L).complete();
+        Member venohm = FIAMembers.VENOHM_ID.getMember();
+        Member acct4Loss = FIAMembers.ACCT4LOSS_ID.getMember();
+        Member xEntric = FIAMembers.XENTRIC_ID.getMember();
+        Member impervious = FIAMembers.IMPERVIOUS_ID.getMember();
 
         Calendar cal = Calendar.getInstance();
         int weekDay = cal.get(Calendar.DAY_OF_WEEK);

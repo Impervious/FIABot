@@ -21,6 +21,8 @@ public class TestCommand extends Command {
         if(event.getAuthor().equals(impervious.getUser())) {
             //TEST CODE HERE :)
             Util.sendMessage(event.getTextChannel(), "eeeee");
+            /*TextChannel newChannel = FIABot.getMainGuild().createTextChannel("TEST-CHANNEL")
+                    .addMemberPermissionOverride(event.getMember().getIdLong(), EnumSet.of(Permission.VIEW_CHANNEL), null).complete();*/
         } else {
             Util.sendMessage(event.getTextChannel(), "<:monkaStab:772354625641906236>");
         }
