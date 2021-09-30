@@ -106,6 +106,7 @@ public class FIABot {
     }
 
     public static Guild getMainGuild() { return jda.getGuildById("739893045994061946"); }
+    public static Guild getLNRGuild() { return jda.getGuildById("739893045994061946"); }
     public static FIABot getInstance() { return instance; }
     public JDA getClient() { return jda; }
 }

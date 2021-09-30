@@ -18,5 +18,5 @@ public enum FIAMembers {
     @Getter
     private final long id;
 
-    public Member getMember() { return FIABot.getMainGuild().getMemberById(id); }
+    public Member getMember() { return FIABot.getLNRGuild().getMemberById(id); }
 }
